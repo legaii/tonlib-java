@@ -96,7 +96,7 @@ public class TonTestJava {
         TonApi.AccountAddress giverAddress = (TonApi.AccountAddress)client.send(new TonApi.GetAccountAddress(new TonApi.WalletV3InitialAccountState(giverKey.publicKey, info.configInfo.defaultWalletId), 1, 0));
 
         appendLog("sending coins...");
-        TonApi.QueryInfo queryInfo = (TonApi.QueryInfo)client.send(new TonApi.CreateQuery(giverInputKey, giverAddress, 60, new TonApi.ActionMsg(new TonApi.MsgMessage[]{new TonApi.MsgMessage(walletAddress, "", 6660000000L, new TonApi.MsgDataText("Hello".getBytes()) )}, true), new TonApi.WalletV3InitialAccountState(giverKey.publicKey, info.configInfo.defaultWalletId)));
+        TonApi.QueryInfo queryInfo = (TonApi.QueryInfo)client.send(new TonApi.CreateQuery(giverInputKey, giverAddress, 60, new TonApi.ActionMsg(new TonApi.MsgMessage[]{new TonApi.MsgMessage(walletAddress, "", 6660000000L, new TonApi.MsgDataText("Hello".getBytes()), -1 )}, true), new TonApi.WalletV3InitialAccountState(giverKey.publicKey, info.configInfo.defaultWalletId)));
         result = client.send(new TonApi.QuerySend(queryInfo.id));
         if (!(result instanceof TonApi.Ok)) {
             appendLog("failed to send coins");
